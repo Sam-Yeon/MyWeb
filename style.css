@@ -217,14 +217,14 @@ body::before {
 
 /* keep your exact placement */
 .sticker-1 {
-  top: 5%;
-  left: 5%;
+  top: 1%;
+  left: 4%;
   transform: rotate(-8deg);
 }
 
 .sticker-2 {
-  bottom: 8%;
-  right: 6%;
+  bottom: 2%;
+  right: 5%;
   transform: rotate(6deg);
 }
 
