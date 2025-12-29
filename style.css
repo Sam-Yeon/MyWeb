@@ -126,7 +126,7 @@ body::before {
 .music-btn {
   position: fixed;
   bottom: 18px;
-  right: 18px;
+  left: 18px;   /* changed from right to left */
   padding: 10px 14px;
   border-radius: 999px;
   border: none;
@@ -205,17 +205,14 @@ body::before {
 /* ✨ Stickers */
 .sticker {
   position: absolute;
-
-  /* responsive size but keeps your positions */
   width: clamp(80px, 12vw, 180px);
   height: auto;
-
   filter: drop-shadow(0 10px 10px rgba(0,0,0,.4));
-  z-index: 2;   /* below letter-card */
-  pointer-events: none; /* avoid click blocking */
+  z-index: 2;
+  pointer-events: none;
 }
 
-/* keep your exact placement */
+/* original positions */
 .sticker-1 {
   top: 1%;
   left: 4%;
@@ -227,6 +224,22 @@ body::before {
   right: 5%;
   transform: rotate(6deg);
 }
+
+/* mobile adjustments */
+@media (max-width: 768px) {
+  .sticker-1 {
+    top: 2%;      /* a tiny move down */
+    left: 2%;     /* slightly more left padding */
+    transform: rotate(-8deg) scale(0.8);
+  }
+
+  .sticker-2 {
+    bottom: 2%;
+    right: 2%;    /* slightly more right padding */
+    transform: rotate(6deg) scale(0.8);
+  }
+}
+
 
 /* make sure letter stays ABOVE stickers */
 .letter-card {
