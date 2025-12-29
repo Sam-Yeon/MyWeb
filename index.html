@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Happy New Year ✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Add Fredoka font here -->
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+
+  <!-- Your CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- Sparkle Background -->
+  <div class="stars"></div>
+  <div class="grain"></div>
+
+  <!-- Popup Overlay -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Popup -->
+  <div class="popup" id="popup">
+    <button class="close-btn" id="closePopup">✖</button>
+    <h2>🌟 Happy New Year 🌟</h2>
+    <p>Hello people! Wishing y'all a very beautiful start of the year 
+     💌</p>
+  </div>
+
+  <!-- Music Toggle -->
+  <button class="music-btn" id="musicBtn">🔇 Mute</button>
+<audio id="music" loop>
+  <source src="music/cozy-lofi.mp3" type="audio/mpeg">
+</audio>
+
+
+
+  <!-- Main Content -->
+  <main class="content">
+    <div class="letter-card">
+      <h1>Dear Peeps,</h1>
+      <p>
+        I’m creating this because I’m unemployed,
+        and also because I can put this on my portfolio
+        so I’ll have at least something to show (AND also because
+        I like to glaze my coding knowledge since it's the only
+        thing I have) Plus, texting every person personally is 
+        overwhelming for me. Anyway, coming to the main point… 
+        2025 has been absolute dogshit, and I feel like I haven’t 
+        done much this year.. apart from joining the gym, gaining
+        some muscle and a few pounds. That feels freaking fantastic,
+        not gonna lie. I pray to God that next year will be a little
+        better and more bearable. Yeah, that’s all from me. I hope
+        the upcoming year will be just as fun, if not more, for me
+        and everyone and I hope it’ll be a little kinder to me too 
+        Mwah Mwah Mwah ✨
+      </p>
+    </div>
+
+    <!-- Example sticker spots -->
+    <img src="stickers/01.png" class="sticker sticker-1">
+    <img src="stickers/02.png" class="sticker sticker-2">
+  </main>
+
+<script>
+  const popup = document.getElementById("popup");
+  const overlay = document.getElementById("overlay");
+  const closeBtn = document.getElementById("closePopup");
+  const music = document.getElementById("music");
+  const musicBtn = document.getElementById("musicBtn");
+
+  // calm default volume
+  music.volume = 0.5;
+
+  //  When popup closes → fade music in + update button text
+  closeBtn.addEventListener("click", () => {
+    popup.classList.add("hidden");
+    overlay.classList.add("hidden");
+
+    if (music.paused) {
+      music.volume = 0;
+      music.play();
+
+      let v = 0;
+      const fade = setInterval(() => {
+        if (v < 0.5) {
+          v += 0.05;
+          music.volume = v;
+        } else clearInterval(fade);
+      }, 80);
+
+      musicBtn.textContent = "🔊 Music"; // current state = playing
+    }
+  });
+
+  //  Music toggle button
+  musicBtn.addEventListener("click", () => {
+    if (music.paused) {
+      music.play();
+      musicBtn.textContent = "🔊 Music"; // now playing
+    } else {
+      music.pause();
+      musicBtn.textContent = "🔇 Mute";  // now muted
+    }
+  });
+</script>
+
+
+
+</body>
+</html>
